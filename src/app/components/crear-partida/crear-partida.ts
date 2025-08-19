@@ -43,8 +43,6 @@ export class CrearPartidaComponent {
   createRoom() {
     this.room.id = uuid.v4();
     this.room.name = this.form.getRawValue().roomName;
-    console.log(this.form.controls.roomName.errors);
-    console.log(this.room);
     localStorage.setItem('room', JSON.stringify(this.room));
     this.router.navigate(['/room/' + this.room.id]);
   }

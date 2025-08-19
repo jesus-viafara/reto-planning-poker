@@ -10,7 +10,7 @@ import {
   maxNumbersValidator,
   soloNumerosValidator,
 } from '../../validations/name.validations';
-import { User } from '../../models/user.model';
+import { User, userList2 } from '../../models/user.model';
 import { CommonModule } from '@angular/common';
 import * as uuid from 'uuid';
 import { Room } from '../../models/room.model';
@@ -24,8 +24,9 @@ import { Room } from '../../models/room.model';
 })
 export class ModalCrearUsuarioComponent {
   @Output() close = new EventEmitter(); // or // close = output();
-  user: User = { id: '', name: '', rol: '', modo: '' };
+  user: User = { id: '', name: '', rol: '', modo: '', vote: '?' };
   room: Room = { id: '', name: '', usersId: [], adminName: '' };
+  userList: User[] = [];
   fb = inject(NonNullableFormBuilder);
   form = this.fb.group({
     userName: this.fb.control('', {
@@ -43,6 +44,7 @@ export class ModalCrearUsuarioComponent {
 
   createUser() {
     this.room = JSON.parse(localStorage.getItem('room') || '{}');
+    this.userList = userList2;
     this.user.id = uuid.v4();
     this.user.name = this.form.getRawValue().userName;
     this.user.modo = this.form.getRawValue().modo;
@@ -53,7 +55,10 @@ export class ModalCrearUsuarioComponent {
     } else {
       this.user.rol = 'player';
     }
+    this.userList.push(this.user);
     localStorage.setItem('user', JSON.stringify(this.user));
+    localStorage.setItem('userList', JSON.stringify(this.userList));
+
     this.close.emit(true);
   }
 }

@@ -12,6 +12,11 @@ import { Room } from '../../models/room.model';
 export class HomeComponent {
   room?: Room;
 
+  ngOnInit(): void {
+    localStorage.removeItem('room');
+    localStorage.removeItem('user');
+  }
+
   getRoom(room: Room) {
     this.room = room;
     console.log('Room received:', this.room);

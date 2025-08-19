@@ -1,0 +1,76 @@
+.poker-table-outer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  width: 371px;
+  height: 50vw;
+  border: 2px solid #6429cd;
+  border-radius: 276px;
+  box-shadow: 0px 0px 15px 0px #6429cd;
+}
+
+.poker-table-middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 341px;
+  height: 45vw;
+  border: 2px solid #6429cd;
+  border-radius: 276px;
+  box-shadow: 0px 12px 24px 0px rgba(100, 41, 205, 0.6);
+}
+
+.poker-table-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 40vw;
+  background: rgba(31, 13, 63, 0.6);
+  border: 1px solid #6429cd;
+  border-radius: 276px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.06), 0px 3px 6px 0px rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 480px) {
+  .poker-table-outer,
+  .poker-table-middle,
+  .poker-table-inner {
+    transform: translate(-50%, -50%);
+  }
+
+  .poker-table-outer {
+    width: 60%;
+    height: 300px;
+  }
+
+  .poker-table-middle {
+    width: 95%;
+    height: 260px;
+  }
+
+  .poker-table-inner {
+    width: 95%;
+    height: 237px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .poker-table-outer {
+    width: 600px;
+    height: 345px;
+  }
+
+  .poker-table-middle {
+    width: 555px;
+    height: 298px;
+  }
+
+  .poker-table-inner {
+    width: 521px;
+    height: 272px;
+  }
+}

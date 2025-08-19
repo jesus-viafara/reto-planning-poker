@@ -1,5 +1,5 @@
-@if( isChildOpen == true ) {
-<app-modal-crear-usuario (close)="isChildOpen = false" /> }
-
-<p>{{ room?.id }}</p>
-<p>{{ room?.name }}</p>
+@if( isChildOpen == true ) { <app-modal-crear-usuario (close)="isChildOpen = false" /> }
+<main class="main-room-content">
+  <app-poker-table />
+  <app-players-positions [userList]="userList" />
+</main>
