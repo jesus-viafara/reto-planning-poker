@@ -1,0 +1,36 @@
+<form [formGroup]="form" (ngSubmit)="createRoom()" class="crear-partida">
+  <section>
+    <label for="room-name">Nombra la partida</label>
+    <input
+      class="name-input"
+      formControlName="roomName"
+      type="text"
+      name="room-name"
+      id="room-name"
+    />
+    @if(form.controls.roomName.invalid && (form.controls.roomName.dirty)){
+    <div class="error-messages">
+      @if(form.controls.roomName.errors?.['required']){
+      <small>Se requiere un nombre para la partida!</small>
+      } @if(form.controls.roomName.errors?.['minlength']){
+      <small>El nombre debe tener al menos 3 caracteres!</small>
+      } @if(form.controls.roomName.errors?.['maxlength']){
+      <small>El nombre no debe tener mas de 20 caracteres!</small>
+      } @if(form.controls.roomName.errors?.['forbiddenName']){
+      <small>No usar caracteres especiales!</small>
+      } @if(form.controls.roomName.errors?.['maxNumbers']){
+      <small>Maximo 3 numeros en el nombre!</small>
+      } @if(form.controls.roomName.errors?.['soloNumeros']){
+      <small>EL nombre debe contener letras!</small>
+      }
+    </div>
+    }
+  </section>
+  <button
+    type="submit"
+    class="button"
+    [disabled]="form.controls.roomName.errors"
+  >
+    <p>Crear partida</p>
+  </button>
+</form>

@@ -1,0 +1,75 @@
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 20px 5%;
+  color: white;
+  position: relative;
+  z-index: 1000;
+}
+
+#header h5 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#header h4 {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 100%;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#header img {
+  width: 44px;
+  height: 44px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+}
+
+.invitar-button {
+  background-color: rgba(31, 13, 63, 0.7);
+  border: 1px solid rgba(246, 247, 252, 1);
+  border-radius: 50px;
+  color: white;
+  padding: 16px;
+  display: none;
+}
+
+.admin-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (min-width: 480px) {
+  #header h5 {
+    font-size: 21px;
+  }
+  #header img {
+    width: 60px;
+    height: 60px;
+  }
+
+  #header h4 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 100%;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .invitar-button {
+    display: block;
+  }
+}

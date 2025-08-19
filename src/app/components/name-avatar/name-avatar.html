@@ -1,0 +1,9 @@
+<div
+  class="name-avatar"
+  [ngClass]="{ small: size === 'small', large: size === 'large' }"
+>
+  {{
+    adminName.split(" ")[0].charAt(0).toUpperCase() +
+      adminName.split(" ")[1].charAt(0).toUpperCase()
+  }}
+</div>

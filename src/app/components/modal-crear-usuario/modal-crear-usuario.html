@@ -1,0 +1,63 @@
+<div class="modal-crear-usuario">
+  <form [formGroup]="form" (ngSubmit)="createUser()" class="crear-usuario">
+    <section>
+      <label for="user-name">Tu nombre</label>
+      <input
+        class="name-input"
+        formControlName="userName"
+        type="text"
+        name="user-name"
+        id="user-name"
+      />
+      @if(form.controls.userName.invalid && (form.controls.userName.dirty)){
+      <div class="error-messages">
+        @if(form.controls.userName.errors?.['required']){
+        <small>Se requiere un nombre para la partida!</small>
+        } @if(form.controls.userName.errors?.['minlength']){
+        <small>El nombre debe tener al menos 3 caracteres!</small>
+        } @if(form.controls.userName.errors?.['maxlength']){
+        <small>El nombre no debe tener mas de 20 caracteres!</small>
+        } @if(form.controls.userName.errors?.['forbiddenName']){
+        <small>No usar caracteres especiales!</small>
+        } @if(form.controls.userName.errors?.['maxNumbers']){
+        <small>Maximo 3 numeros en el nombre!</small>
+        } @if(form.controls.userName.errors?.['soloNumeros']){
+        <small>EL nombre debe contener letras!</small>
+        }
+      </div>
+      }
+    </section>
+    <div class="rol-group">
+      <section class="rol-section">
+        <input
+          formControlName="modo"
+          type="radio"
+          id="jugador"
+          name="modo"
+          value="jugador"
+        />
+        <label for="jugador">Jugador <span class="radio-button"></span></label>
+        <input
+          formControlName="modo"
+          type="radio"
+          id="espectador"
+          name="modo"
+          value="espectador"
+        />
+        <label for="espectador"
+          >Espectador <span class="radio-button"></span
+        ></label>
+      </section>
+    </div>
+    <button
+      type="submit"
+      [ngClass]="{
+        'disabled-button': form.controls.userName.errors || !form.getRawValue().modo,
+        'button': form.getRawValue().modo,
+      }"
+      [disabled]="form.controls.userName.errors && !user.modo"
+    >
+      <p>Continuar</p>
+    </button>
+  </form>
+</div>
