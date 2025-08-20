@@ -1,0 +1,19 @@
+<div class="votes">
+  <form [formGroup]="form" class="card-selection">
+    <section class="cards">
+      @for(n of ramdomSerie; track n){
+      <input
+        formControlName="vote"
+        type="radio"
+        [id]="n"
+        [value]="n"
+        name="vote"
+        (change)="onRadioChange($event)"
+      />
+      <label [for]="n"
+        ><span class="vote-card">{{ n }}</span></label
+      >
+      }
+    </section>
+  </form>
+</div>

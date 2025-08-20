@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Room } from '../../models/room.model';
 import { NameAvatarComponent } from '../name-avatar/name-avatar';
+import { ModalInviteLink } from '../modal-invite-link/modal-invite-link';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NameAvatarComponent],
+  imports: [NameAvatarComponent, ModalInviteLink],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
 export class HeaderComponent {
+  @Input() adminName: string = '';
+  @Output() adminname: string = '';
   room: Room = { id: '', adminName: '', name: '', usersId: [] };
   avatarSize: string = 'small';
-  adminName: string = '';
+  isInviteOpen = false;
 
   ngOnInit() {
     this.room = JSON.parse(localStorage.getItem('room') || '{}');

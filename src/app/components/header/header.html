@@ -1,4 +1,5 @@
-<header id="header">
+@if( isInviteOpen == true ) { <app-modal-invite-link (close)="isInviteOpen = false" /> }
+<header>
   <div class="logo">
     <img src="assets/images/ficha-de-poker.png" alt="ficha de poker" fill />
     @if(!room.id){
@@ -10,7 +11,7 @@
   } @if(room.adminName){
   <div class="admin-info">
     <app-name-avatar [adminName]="room.adminName" [size]="'small'" />
-    <button class="invitar-button">Invitar jugaddores</button>
+    <button (click)="isInviteOpen = true" class="invitar-button">Invitar jugaddores</button>
   </div>
   } }
 </header>

@@ -1,0 +1,15 @@
+@if(user.vote){
+<div
+  class="card"
+  [ngClass]="{
+    'no-background': user.vote === '?',
+    'card-placeholder': user.vote,
+  }"
+>
+  <p>{{ user.vote }}</p>
+</div>
+}@else{
+<div class="vote-card">
+  <p>{{ value }}</p>
+</div>
+}

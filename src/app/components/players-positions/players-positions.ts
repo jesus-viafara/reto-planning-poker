@@ -2,10 +2,11 @@ import { Component, Input } from '@angular/core';
 import { User } from '../../models/user.model';
 import { NameAvatarComponent } from '../name-avatar/name-avatar';
 import { CommonModule } from '@angular/common';
+import { Card } from "../card/card";
 
 @Component({
   selector: 'app-players-positions',
-  imports: [NameAvatarComponent, CommonModule],
+  imports: [NameAvatarComponent, CommonModule, Card],
   templateUrl: './players-positions.html',
   styleUrl: './players-positions.css',
 })

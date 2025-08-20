@@ -1,0 +1,15 @@
+<div class="modal-invite-link">
+  <div class="invite-link-container">
+    <div class="modal-header">
+      <h4>Invitar jugadores</h4>
+      <button (click)="closeModal()">X</button>
+    </div>
+    <div class="invite-link">
+      <input class="text-input" formControlName="userName" type="text" [value]="inviteLink" />
+      @if(linkCopied){
+      <p>Link copiado!</p>
+      }
+      <button (click)="copyLink()" class="button">Copiar Link</button>
+    </div>
+  </div>
+</div>

@@ -4,11 +4,11 @@
     @if(user.modo==='espectador'){
     <app-name-avatar [adminName]="user.name" class="admin-avatar" size="large" />
     }@else {
-    <div class="card-placeholder" [ngClass]="{ 'waiting-vote': user.vote === '?' }"></div>
+    <app-card [user]="user" />
     } @if(user.rol==='admin'){
-    <div class="player-name">{{ user.name }} (Admin)</div>
+    <div class="player-name">{{ user.name.split(' ')[0] }}</div>
     }@else {
-    <div class="player-name">{{ user.name }}</div>
+    <div class="player-name">{{ user.name.split(' ')[0] }}</div>
     }
   </div>
   }
