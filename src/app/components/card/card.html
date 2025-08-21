@@ -2,14 +2,20 @@
 <div
   class="card"
   [ngClass]="{
-    'no-background': user.vote === '?',
+    'no-background': user.vote === '?' || user.vote === 'coffe' ,
     'card-placeholder': user.vote,
   }"
 >
+  @if(votesRevealed){
   <p>{{ user.vote }}</p>
+
+  }
 </div>
 }@else{
 <div class="vote-card">
+  @if(votesRevealed){
   <p>{{ value }}</p>
+
+  }
 </div>
 }

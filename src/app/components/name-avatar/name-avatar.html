@@ -1,12 +1,11 @@
-@if(adminName.split(" ").length > 1){
+@if(userName.split(" ").length > 1){
 <div class="name-avatar" [ngClass]="{ small: size === 'small', large: size === 'large' }">
   {{
-    adminName.split(' ')[0].charAt(0).toUpperCase() +
-      adminName.split(' ')[1].charAt(0).toUpperCase()
+    userName.split(' ')[0].charAt(0).toUpperCase() + userName.split(' ')[1].charAt(0).toUpperCase()
   }}
 </div>
 }@else{
 <div class="name-avatar" [ngClass]="{ small: size === 'small', large: size === 'large' }">
-  {{ adminName.charAt(0).toUpperCase() + adminName.charAt(1).toUpperCase() }}
+  {{ userName.charAt(0).toUpperCase() + userName.charAt(1).toUpperCase() }}
 </div>
 }

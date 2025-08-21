@@ -41,7 +41,7 @@
         'disabled-button': form.controls.userName.errors || !form.getRawValue().modo,
         'button': form.getRawValue().modo,
       }"
-      [disabled]="form.controls.userName.errors && !user.modo"
+      [disabled]="!form.getRawValue().modo"
     >
       <p>Continuar</p>
     </button>

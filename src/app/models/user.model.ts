@@ -18,8 +18,8 @@ export const userList1: User[] = [
 ];
 
 export const userList2: User[] = [
-  { id: 'u009', name: 'Natalia Peña', rol: 'jugador', modo: 'espectador', vote: '?' },
-  { id: 'u010', name: 'Andrés Molina', rol: 'jugador', modo: 'jugador', vote: '4' },
+  { id: 'u009', name: 'Natalia Peña', rol: 'jugador', modo: 'jugador', vote: '?' },
+  { id: 'u010', name: 'Andrés Molina', rol: 'jugador', modo: 'espectador', vote: '4' },
   { id: 'u011', name: 'Valeria Torres', rol: 'jugador', modo: 'jugador', vote: '6' },
   { id: 'u012', name: 'Juan Esteban', rol: 'jugador', modo: 'jugador', vote: '?' },
   { id: 'u013', name: 'Santiago López', rol: 'jugador', modo: 'jugador', vote: '2' },

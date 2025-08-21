@@ -14,6 +14,9 @@ import {
   maxNumbersValidator,
   soloNumerosValidator,
 } from '../../validations/name.validations';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../state/selectors/data.selectors';
+import { setRoom } from '../../state/actions/data.actions';
 
 @Component({
   selector: 'app-crear-partida',
@@ -23,7 +26,7 @@ import {
   styleUrl: './crear-partida.css',
 })
 export class CrearPartidaComponent {
-  room: Room = { id: '', name: '', usersId: [], adminName: '' };
+  room: Room = { id: '', name: '', state: 'hidden', adminName: '' };
   fb = inject(NonNullableFormBuilder);
   form = this.fb.group({
     roomName: this.fb.control('', {
@@ -38,12 +41,12 @@ export class CrearPartidaComponent {
     }),
   });
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
   createRoom() {
     this.room.id = uuid.v4();
     this.room.name = this.form.getRawValue().roomName;
-    localStorage.setItem('room', JSON.stringify(this.room));
+    this.store.dispatch(setRoom({ payload: this.room }));
     this.router.navigate(['/room/' + this.room.id]);
   }
 }

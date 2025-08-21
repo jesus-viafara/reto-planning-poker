@@ -26,7 +26,12 @@
     </div>
     }
   </section>
-  <button type="submit" class="button" [disabled]="form.controls.roomName.errors">
+  <button
+    type="submit"
+    class="button"
+    [ngClass]="{ 'disabled-button': form.controls.roomName.errors }"
+    [disabled]="form.controls.roomName.errors"
+  >
     <p>Crear partida</p>
   </button>
 </form>

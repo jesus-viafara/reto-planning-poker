@@ -6,7 +6,8 @@
   background: rgba(189, 189, 255, 1);
   color: rgba(51, 0, 114, 1);
   font-weight: 700;
-  font-style: poppins, sans-serif;
+  font-style: poppins sans-serif;
+  margin: 0;
 }
 
 .small {
@@ -18,9 +19,16 @@
 }
 
 .large {
-  width: 46px;
-  height: 46px;
+  width: 36px;
+  height: 36px;
   font-size: 21px;
   line-height: 100%;
   text-align: center;
+}
+
+@media (min-width: 480px) {
+  .large {
+    width: 56px;
+    height: 56px;
+  }
 }

@@ -1,5 +1,7 @@
+@if(user.modo==='jugador' && room?.state === 'hidden'){
 <div class="votes">
   <form [formGroup]="form" class="card-selection">
+    <h5>Elige una carta 👇</h5>
     <section class="cards">
       @for(n of ramdomSerie; track n){
       <input
@@ -14,6 +16,25 @@
         ><span class="vote-card">{{ n }}</span></label
       >
       }
+      <input
+        formControlName="vote"
+        type="radio"
+        id="?"
+        value="?"
+        name="vote"
+        (change)="onRadioChange($event)"
+      />
+      <label for="?"><span class="vote-card">?</span></label>
+      <input
+        formControlName="vote"
+        type="radio"
+        id="coffe"
+        value="coffe"
+        name="vote"
+        (change)="onRadioChange($event)"
+      />
+      <label for="coffe"><span class="vote-card">☕️</span></label>
     </section>
   </form>
 </div>
+}

@@ -6,6 +6,7 @@
   width: 100vh;
   height: 100vw;
   transform: translate(-50%, -50%) rotate(90deg);
+  z-index: -10;
 }
 
 .player-slot {
@@ -18,7 +19,7 @@
 
 .admin-avatar {
   transform: rotate(-90deg);
-  margin: -15px;
+  margin: 10px -15px;
 }
 
 .player-name {
@@ -51,14 +52,14 @@
 
 .player-slot[data-position='left'] {
   top: 50%;
-  left: 25%;
-  transform: translate(-25%, -50%);
+  left: 20%;
+  transform: translate(-20%, -50%);
 }
 
 .player-slot[data-position='right'] {
   top: 50%;
-  left: 80%;
-  transform: translate(-80%, -50%);
+  left: 85%;
+  transform: translate(-85%, -50%);
 }
 
 .player-slot[data-position='bottom-left'] {
@@ -91,6 +92,7 @@
   }
 
   .admin-avatar {
+    transform: rotate(0);
     margin: 0;
   }
 
@@ -150,6 +152,108 @@
   .player-slot[data-position='bottom-right'] {
     top: calc(50% + 220px);
     left: calc(50% + 150px);
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Posicionamiento específico de cada jugador */
+  .player-slot[data-position='top-left'] {
+    top: calc(50% - 200px);
+    left: calc(50% - 170px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='top-center'] {
+    top: calc(50% - 200px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='top-right'] {
+    top: calc(50% - 200px);
+    left: calc(50% + 170px);
+    transform: translate(-55%, -50%);
+  }
+
+  .player-slot[data-position='left'] {
+    top: 50%;
+    left: calc(50% - 320px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='right'] {
+    top: 50%;
+    left: calc(50% + 320px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-left'] {
+    top: calc(50% + 200px);
+    left: calc(50% - 170px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-center'] {
+    top: calc(50% + 200px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-right'] {
+    top: calc(50% + 200px);
+    left: calc(50% + 170px);
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width: 1400px) {
+  /* Posicionamiento específico de cada jugador */
+  .player-slot[data-position='top-left'] {
+    top: calc(50% - 250px);
+    left: calc(50% - 170px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='top-center'] {
+    top: calc(50% - 250px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='top-right'] {
+    top: calc(50% - 250px);
+    left: calc(50% + 170px);
+    transform: translate(-55%, -50%);
+  }
+
+  .player-slot[data-position='left'] {
+    top: 50%;
+    left: calc(50% - 360px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='right'] {
+    top: 50%;
+    left: calc(50% + 360px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-left'] {
+    top: calc(50% + 250px);
+    left: calc(50% - 170px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-center'] {
+    top: calc(50% + 250px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-right'] {
+    top: calc(50% + 250px);
+    left: calc(50% + 170px);
     transform: translate(-50%, -50%);
   }
 }

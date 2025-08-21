@@ -17,13 +17,30 @@ label {
   transform: translatex(-50%);
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-selection h5 {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 100%;
+  margin: 0;
+  padding: 15px;
 }
 
 .cards {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
+  justify-content: start;
+  gap: 10px;
+  width: 90%;
+  overflow-x: auto; /* Enables horizontal scrolling when content overflows */
+  overflow-y: hidden; /* Hides any vertical scrollbars */
+  white-space: nowrap;
+  margin-bottom: -25px;
 }
 
 .vote-card {
@@ -57,4 +74,14 @@ label {
 }
 .cards input:checked + label .vote-card {
   transform: translatey(-10%);
+}
+
+@media (min-width: 480px) {
+  .cards {
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: -25px;
+    overflow: visible;
+  }
 }

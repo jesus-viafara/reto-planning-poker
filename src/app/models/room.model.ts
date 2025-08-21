@@ -1,6 +1,6 @@
 export interface Room {
   id: string;
   name: string;
-  usersId: string[];
+  state: string;
   adminName: string;
 }

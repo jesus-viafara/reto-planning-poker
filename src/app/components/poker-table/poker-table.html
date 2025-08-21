@@ -1,5 +1,14 @@
 <div class="poker-table-outer">
   <div class="poker-table-middle">
-    <div class="poker-table-inner"></div>
+    <div class="poker-table-inner">
+      @if(user?.rol==='admin'){ @switch (room.state) { @case ('revealing') {
+      <p>revealing</p>
+      } @case ('revealed') {
+      <button (click)="onReset()" class="poker-table-button">Nueva Votacion</button>
+      } @case ('hidden') {
+      <!-- Default content if no case matches -->
+      <button (click)="onReveal()" class="poker-table-button">Revelar cartas</button>
+      } }}
+    </div>
   </div>
 </div>

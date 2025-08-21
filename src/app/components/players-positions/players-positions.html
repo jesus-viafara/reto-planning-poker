@@ -1,13 +1,10 @@
 <div class="player-positions">
-  @for(user of userList;track user.id ; let idx = $index){ @if(user.rol === 'admin' ){}
+  @for(user of userList;track user.id ; let idx = $index){
   <div class="player-slot" [attr.data-position]="playerPosition[$index]">
-    @if(user.modo==='espectador'){
-    <app-name-avatar [adminName]="user.name" class="admin-avatar" size="large" />
+    @if(user.rol==='admin' && user.modo==='espectador'){
+    <app-name-avatar class="admin-avatar" type="player" size="large" [userName]="user.name" />
     }@else {
-    <app-card [user]="user" />
-    } @if(user.rol==='admin'){
-    <div class="player-name">{{ user.name.split(' ')[0] }}</div>
-    }@else {
+    <app-card [userId]="user.id" />
     <div class="player-name">{{ user.name.split(' ')[0] }}</div>
     }
   </div>

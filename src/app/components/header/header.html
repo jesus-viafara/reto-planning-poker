@@ -8,10 +8,10 @@
   </div>
   @if(room.id){ @if(room.name){
   <h4>{{ room.name.toLocaleUpperCase() }}</h4>
-  } @if(room.adminName){
+  }
   <div class="admin-info">
-    <app-name-avatar [adminName]="room.adminName" [size]="'small'" />
+    <app-name-avatar [size]="'small'" />
     <button (click)="isInviteOpen = true" class="invitar-button">Invitar jugaddores</button>
   </div>
-  } }
+  }
 </header>
