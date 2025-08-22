@@ -25,7 +25,9 @@ export class NameAvatarComponent {
 
   ngOnInit() {
     this.data$.subscribe((res: any) => {
-      if (this.type !== 'player') {
+      if (this.type === 'user') {
+        this.userName = res.user.name;
+      } else if (this.type === 'player') {
         this.userName = res.room.adminName;
       }
     });

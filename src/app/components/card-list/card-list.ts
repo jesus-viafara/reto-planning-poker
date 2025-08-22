@@ -5,7 +5,7 @@ import { DataState } from '../../models/dataState';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState, getData } from '../../state/selectors/data.selectors';
-import { setUser, setParticipants } from '../../state/actions/data.actions';
+import { setUser, setParticipants, setRoom } from '../../state/actions/data.actions';
 import { User } from '../../models/user.model';
 import { Result } from '../../models/result.model';
 import { Room } from '../../models/room.model';
@@ -20,11 +20,11 @@ export class CardList {
   data: any;
   data$: Observable<DataState>;
   user: User = { id: '', name: '', rol: '', modo: '', vote: '' };
-  room?: Room;
+  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [] };
   userList: User[] = [];
   result: Result = { totalVotes: 0, average: 0, voteCount: { '0': 0 } };
   selectedOption: string = '?';
-  ramdomSerie: number[] = this.seriePersonalizada(10);
+  ramdomSerie: string[] = this.seriePersonalizada(10);
   isSelected: boolean = false;
   fb = inject(NonNullableFormBuilder);
   form = this.fb.group({
@@ -39,7 +39,7 @@ export class CardList {
     const secuencia = [];
     let valor = 1;
     for (let i = 0; i < n; i++) {
-      secuencia.push(valor);
+      secuencia.push(valor + '');
       if (i % 2 === 0) {
         valor += 3;
       } else {
@@ -52,9 +52,11 @@ export class CardList {
   ngOnInit() {
     this.data$.subscribe((res: any) => {
       this.user = res.user;
-      this.room = res.room;
+      this.room = { ...res.room };
       this.result = { ...res.result };
     });
+    this.room.cardSet = [...this.ramdomSerie];
+    this.store.dispatch(setRoom({ payload: { ...this.room } }));
   }
 
   onRadioChange(event: any) {

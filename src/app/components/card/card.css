@@ -21,6 +21,10 @@
   background: none;
 }
 
+.espectador {
+  background: rgba(157, 157, 161, 0.6);
+}
+
 .card-selected {
   background: rgba(187, 101, 255, 1);
 }

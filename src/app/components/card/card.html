@@ -2,8 +2,9 @@
 <div
   class="card"
   [ngClass]="{
-    'no-background': user.vote === '?' || user.vote === 'coffe' ,
+    'no-background': user.vote === '?' || user.vote === 'coffe',
     'card-placeholder': user.vote,
+    espectador: user.modo === 'espectador'
   }"
 >
   @if(votesRevealed){

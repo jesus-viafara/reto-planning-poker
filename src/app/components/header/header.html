@@ -10,8 +10,51 @@
   <h4>{{ room.name.toLocaleUpperCase() }}</h4>
   }
   <div class="admin-info">
-    <app-name-avatar [size]="'small'" />
+    <app-name-avatar
+      (click)="onChangeModo()"
+      onkeydown="onChangeModo()"
+      type="user"
+      [size]="'small'"
+      class="avatar"
+    />
     <button (click)="isInviteOpen = true" class="invitar-button">Invitar jugaddores</button>
   </div>
   }
 </header>
+@if( isChangeModo == true ) {
+<div class="change-modo-menu">
+  <div class="change-rol">
+    <button (click)="onChangeModo()" class="close-button">X</button>
+    <form [formGroup]="form" (ngSubmit)="changeModo()" class="rol-form">
+      <h4>Cambiar Modo de visualizacion</h4>
+      <div class="rol-group">
+        <section class="rol-section">
+          <input formControlName="modo" type="radio" id="jugador" name="modo" value="jugador" />
+          <label for="jugador">Jugador <span class="radio-button"></span></label>
+          <input
+            formControlName="modo"
+            type="radio"
+            id="espectador"
+            name="modo"
+            value="espectador"
+          />
+          <label for="espectador">Espectador <span class="radio-button"></span></label>
+        </section>
+      </div>
+      <button
+        type="submit"
+        [ngClass]="{
+        'disabled-button': !form.getRawValue().modo,
+        'button': form.getRawValue().modo,
+      }"
+        [disabled]="!form.getRawValue().modo"
+      >
+        <p>Guardar</p>
+      </button>
+    </form>
+    <button (click)="isInviteOpen = true; isChangeModo = false" class="invitar-button-menu">
+      Invitar jugaddores
+    </button>
+  </div>
+</div>
+}

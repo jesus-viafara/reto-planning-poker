@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Room } from '../../models/room.model';
 import { ModalCrearUsuarioComponent } from '../../components/modal-crear-usuario/modal-crear-usuario';
-import { User, userList1, userList2 } from '../../models/user.model';
+import { User, userList1, userList2, userList3 } from '../../models/user.model';
 import { PokerTable } from '../../components/poker-table/poker-table';
 import { PlayersPositions } from '../../components/players-positions/players-positions';
 import { CardList } from '../../components/card-list/card-list';
@@ -29,17 +29,22 @@ import { Result } from '../../models/result.model';
   styleUrl: './room.css',
 })
 export class RoomComponent {
+  readonly store: Store;
   data: any;
   data$: Observable<DataState>;
   room?: Room;
   adminName: string = 'default';
   user: User = { id: '', name: '', rol: '', modo: '', vote: '' };
   result: Result = { totalVotes: 0, average: 0, voteCount: {} };
-  userList: User[] = userList2;
+  participants: User[] = [];
+  userList1: User[] = userList1;
+  userList2: User[] = userList2;
+  userList3: User[] = userList3;
   isChildOpen = false;
 
-  constructor(private store: Store<AppState>) {
-    this.data$ = this.store.select(getData);
+  constructor(store: Store<AppState>) {
+    this.store = store;
+    this.data$ = store.select(getData);
   }
 
   ngOnInit() {
@@ -51,7 +56,7 @@ export class RoomComponent {
       this.data = JSON.parse(localStorage.getItem('data') || '{}');
       this.room = { ...this.data.room };
       this.user = { ...this.data.user };
-      this.userList = [...this.data.participants];
+      this.participants = [...this.data.participants];
       this.result = { ...this.data.result };
       this.store.dispatch(
         setRoom({
@@ -65,7 +70,7 @@ export class RoomComponent {
       );
       this.store.dispatch(
         setParticipants({
-          payload: this.userList,
+          payload: this.participants,
         })
       );
       this.store.dispatch(

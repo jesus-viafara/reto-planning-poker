@@ -1,0 +1,31 @@
+.loader {
+  width: 150px;
+  height: 30px;
+  --_g: radial-gradient(
+      farthest-side,
+      #0000 calc(95% - 5px),
+      rgba(100, 41, 205, 1) calc(100% - 5px) 98%,
+      #0000 101%
+    )
+    no-repeat;
+  background: var(--_g), var(--_g), var(--_g), var(--_g);
+  background-size: 20% 100%;
+  animation: l40-1 0.75s infinite alternate, l40-2 1.5s infinite alternate;
+}
+
+@keyframes l40-1 {
+  0%,
+  10% {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  33% {
+    background-position: 0 0, calc(100% / 3) 0, calc(100% / 3) 0, calc(100% / 3) 0;
+  }
+  66% {
+    background-position: 0 0, calc(100% / 3) 0, calc(2 * 100% / 3) 0, calc(2 * 100% / 3) 0;
+  }
+  90%,
+  100% {
+    background-position: 0 0, calc(100% / 3) 0, calc(2 * 100% / 3) 0, 100% 0;
+  }
+}

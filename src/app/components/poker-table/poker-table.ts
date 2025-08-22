@@ -7,16 +7,17 @@ import { Room } from '../../models/room.model';
 import { User } from '../../models/user.model';
 import { Result } from '../../models/result.model';
 import { setResult, setRoom } from '../../state/actions/data.actions';
+import { RevealingLoadding } from '../revealing-loadding/revealing-loadding';
 
 @Component({
   selector: 'app-poker-table',
-  imports: [],
+  imports: [RevealingLoadding],
   templateUrl: './poker-table.html',
   styleUrl: './poker-table.css',
 })
 export class PokerTable {
   data$: Observable<DataState>;
-  room: Room = { id: '', name: '', state: 'hidden', adminName: '' };
+  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [] };
   user?: User;
   result: Result = { totalVotes: 0, average: 0, voteCount: {} };
   participants: User[] = [];
@@ -52,13 +53,11 @@ export class PokerTable {
     this.votes = [];
     for (const p of this.participants) {
       if (p.modo === 'jugador') {
-        console.log(p.modo, p.vote);
         this.votes.push(p.vote);
       }
     }
 
     const realVotes: number[] = this.extractAllNumbers(this.votes);
-    console.log(realVotes);
 
     // Total number of votes
     this.result = { ...this.result, totalVotes: realVotes.length };
@@ -74,36 +73,24 @@ export class PokerTable {
       this.result.voteCount[vote] = (this.result.voteCount[vote] || 0) + 1;
     });
 
-    console.log(this.result);
-
     this.store.dispatch(setResult({ payload: this.result }));
     this.store.dispatch(setRoom({ payload: { ...this.room, state: 'revealed' } }));
-
-    // // Output
-    console.log(this.result);
-
-    console.log(`Total Votes: ${this.result.totalVotes}`);
-    console.log(`Average Vote: ${this.result.average.toFixed(2)}`);
-    console.log('Vote Counts:');
-    for (const [value, count] of Object.entries(this.result.voteCount)) {
-      console.log(`Value ${value}: ${count} vote(s)`);
-    }
   }
 
   onReset() {
+    this.room.state = 'revealing';
     setTimeout(() => {
       this.result = { totalVotes: 0, average: 0, voteCount: {} };
       this.store.dispatch(setRoom({ payload: { ...this.room, state: 'hidden' } }));
       this.room.state = 'hidden';
-    }, 1000);
+    }, 2000);
   }
 
   onReveal() {
-    console.log('revealing');
     this.room.state = 'revealing';
     setTimeout(() => {
       this.getResults();
       this.room.state = 'revealed';
-    }, 1000);
+    }, 3000);
   }
 }

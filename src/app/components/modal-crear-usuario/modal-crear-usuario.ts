@@ -32,7 +32,7 @@ export class ModalCrearUsuarioComponent {
   data$: Observable<DataState>;
   @Output() close = new EventEmitter(); // or // close = output();
   user: User = { id: '', name: '', rol: '', modo: '', vote: '?' };
-  room: Room = { id: '', name: '', state: 'hidden', adminName: '' };
+  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [] };
   userList: User[] = [...userList2];
   fb = inject(NonNullableFormBuilder);
   form = this.fb.group({

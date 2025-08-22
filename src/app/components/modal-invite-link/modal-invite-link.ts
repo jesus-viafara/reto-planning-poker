@@ -9,10 +9,13 @@ import { Router } from '@angular/router';
 })
 export class ModalInviteLink {
   @Output() close = new EventEmitter(); // or // close = output();
+  readonly router: Router;
   inviteLink: string = 'https://prsgplanningpoker.com';
   linkCopied: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(router: Router) {
+    this.router = router;
+  }
 
   ngOnInit(): void {
     this.inviteLink += this.router.url;

@@ -1,8 +1,8 @@
 @if( isChildOpen == true ) { <app-modal-crear-usuario (close)="isChildOpen = false" /> }
 <app-header [adminName]="user.name"></app-header>
 <main class="main-room-content">
-  <app-poker-table />
-  <app-players-positions [userList]="userList" />
+  <app-poker-table class="poker-table" />
+  <app-players-positions class="player-positions" [userList]="participants" />
 </main>
 <app-card-list />
 <app-results />

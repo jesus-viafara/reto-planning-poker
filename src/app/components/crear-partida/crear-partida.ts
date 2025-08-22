@@ -26,7 +26,7 @@ import { setRoom } from '../../state/actions/data.actions';
   styleUrl: './crear-partida.css',
 })
 export class CrearPartidaComponent {
-  room: Room = { id: '', name: '', state: 'hidden', adminName: '' };
+  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [] };
   fb = inject(NonNullableFormBuilder);
   form = this.fb.group({
     roomName: this.fb.control('', {

@@ -3,4 +3,5 @@ export interface Room {
   name: string;
   state: string;
   adminName: string;
+  cardSet: string[];
 }

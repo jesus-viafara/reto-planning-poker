@@ -2,7 +2,7 @@
   <div class="poker-table-middle">
     <div class="poker-table-inner">
       @if(user?.rol==='admin'){ @switch (room.state) { @case ('revealing') {
-      <p>revealing</p>
+      <app-revealing-loadding />
       } @case ('revealed') {
       <button (click)="onReset()" class="poker-table-button">Nueva Votacion</button>
       } @case ('hidden') {

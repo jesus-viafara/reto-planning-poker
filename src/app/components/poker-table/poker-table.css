@@ -1,7 +1,8 @@
 .poker-table-outer {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
+  z-index: 10;
   transform: translate(-50%, -50%) rotate(90deg);
   width: 371px;
   height: 50vw;
@@ -26,7 +27,7 @@
 }
 
 .poker-table-middle {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -38,7 +39,7 @@
 }
 
 .poker-table-inner {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

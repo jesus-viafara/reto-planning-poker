@@ -6,6 +6,13 @@
   padding: 16px;
   display: none;
 }
+.invitar-button-menu {
+  background-color: rgba(31, 13, 63, 0.7);
+  border: 1px solid rgba(246, 247, 252, 1);
+  border-radius: 50px;
+  color: white;
+  padding: 16px;
+}
 
 .admin-info {
   display: flex;
@@ -13,9 +20,159 @@
   gap: 10px;
 }
 
+.avatar {
+  cursor: pointer;
+}
+
+.change-modo-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10000;
+}
+
+.change-rol {
+  width: 90%;
+  height: 200px;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  padding: 5px;
+  transform: translate(-50%, -10%);
+  border: 1px solid rgba(187, 101, 255, 1);
+  border-radius: 25px;
+  box-shadow: 0px 0px 20px 0px rgba(189, 189, 255, 0.2) inset;
+  box-shadow: 0px 0px 15px 0px rgba(100, 41, 205, 1);
+  background: rgba(31, 13, 63, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.rol-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.rol-form h4 {
+  margin-bottom: 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  background: rgba(31, 13, 63, 1);
+  border: none;
+  color: rgba(100, 41, 205, 1);
+  font-weight: 700;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.rol-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.rol-section input {
+  display: none;
+}
+
+.rol-section label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 5px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.radio-button {
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  background: rgba(31, 13, 63, 1);
+  border: 1px solid rgba(187, 101, 255, 1);
+  border-radius: 25px;
+  box-shadow: 0px 0px 2px 0px rgba(189, 189, 255, 0.2) inset;
+  box-shadow: 0px 0px 5px 0px rgba(100, 41, 205, 1);
+  position: relative;
+}
+
+.radio-button::after {
+  content: '';
+  position: absolute;
+  width: 10.5px;
+  height: 10.5px;
+  border-radius: 50%;
+  background: rgba(187, 101, 255, 1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  opacity: 0;
+}
+
+.rol-section input:checked + label .radio-button::after {
+  opacity: 1;
+}
+
 @media (min-width: 480px) {
   .invitar-button {
     display: block;
     cursor: pointer;
+  }
+
+  .invitar-button-menu {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .invitar-button {
+    display: block;
+    cursor: pointer;
+  }
+
+  .invitar-button-menu {
+    display: none;
+  }
+
+  .change-modo-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+  }
+
+  .change-rol {
+    width: 40%;
+    height: 200px;
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    padding: 5px;
+    transform: translate(-10%, -10%);
+  }
+}
+@media (min-width: 1024px) {
+  .change-rol {
+    width: 20%;
+    height: 200px;
+    right: 5%;
+    padding: 5px;
+    transform: translate(90%, 0);
   }
 }

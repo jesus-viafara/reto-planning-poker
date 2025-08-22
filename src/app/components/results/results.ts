@@ -17,7 +17,7 @@ export class Results {
   data$: Observable<DataState>;
   user: User = { id: '', name: '', rol: '', modo: '', vote: '' };
   result: Result = { totalVotes: 0, average: 0, voteCount: {} };
-  room: Room = { id: '', name: '', state: 'hidden', adminName: '' };
+  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [] };
   count: string[] = [];
 
   constructor(private store: Store<AppState>) {

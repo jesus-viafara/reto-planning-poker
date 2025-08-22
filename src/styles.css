@@ -42,11 +42,23 @@ header img {
   height: 44px;
 }
 
+.text-input-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.text-input-section label {
+  width: 300px;
+  text-align: left;
+}
+
 .text-input {
   font-weight: 700;
   text-align: center;
+  width: 300px;
   height: 40px;
-  width: 100%;
   border-radius: 100px;
   border: 1px solid rgba(187, 101, 255, 1);
   margin-top: 8px;
