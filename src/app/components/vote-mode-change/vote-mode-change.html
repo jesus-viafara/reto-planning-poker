@@ -1,0 +1,38 @@
+@if(onChange ){
+<div class="new-vote-mode">
+  <form [formGroup]="form" class="vote-mode-selection">
+    <section class="modes">
+      <input
+        formControlName="voteMode"
+        type="radio"
+        id="fibonacci"
+        value="fibonacci"
+        name="voteMode"
+      />
+      <label for="fibonacci"><span class="vote-mode-card">Fibonacci</span></label>
+      <input
+        formControlName="voteMode"
+        type="radio"
+        id="escala-cuadratica"
+        value="escala-cuadratica"
+        name="voteMode"
+      />
+      <label for="escala-cuadratica"><span class="vote-mode-card">Escala Cuadratica</span></label>
+      <input formControlName="voteMode" type="radio" id="random" value="random" name="voteMode" />
+      <label for="random"><span class="vote-mode-card">Ramdom serie</span></label>
+    </section>
+    <button
+      type="submit"
+      (click)="changeVoteMode()"
+      [ngClass]="{
+        'disabled-button': !form.getRawValue().voteMode,
+        'button': form.getRawValue().voteMode,
+      }"
+      [disabled]="!form.getRawValue().voteMode"
+    >
+      <p>Guardar</p>
+    </button>
+  </form>
+  <div class="loader"></div>
+</div>
+}

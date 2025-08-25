@@ -1,0 +1,300 @@
+/* Posiciones de jugadores */
+.player-positions {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vh;
+  height: 100vw;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.player-slot {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+.no-cursor {
+  cursor: default;
+}
+
+.admin-avatar {
+  transform: rotate(-90deg);
+  margin: 10px -15px;
+}
+
+.player-name {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  transform: rotate(-90deg);
+  cursor: pointer;
+}
+
+.new-admin {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  width: 100vw;
+  height: 10vh;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 120px;
+  height: 20px;
+  -webkit-mask: radial-gradient(circle closest-side, #000 94%, #0000) left/20% 100%;
+  background: linear-gradient(rgba(100, 41, 205, 1) 0 0) left/0% 100% no-repeat #ddd;
+  animation: l17 3s infinite steps(6);
+}
+@keyframes l17 {
+  100% {
+    background-size: 120% 100%;
+  }
+}
+
+/* Posicionamiento específico de cada jugador */
+.player-slot[data-position='top-left'] {
+  top: 10%;
+  left: 35%;
+  transform: translate(-35%, -10%);
+}
+
+.player-slot[data-position='top-center'] {
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+}
+
+.player-slot[data-position='top-right'] {
+  top: 10%;
+  left: 65%;
+  transform: translate(-65%, -10%);
+}
+
+.player-slot[data-position='left'] {
+  top: 50%;
+  left: 20%;
+  transform: translate(-20%, -50%);
+}
+
+.player-slot[data-position='right'] {
+  top: 50%;
+  left: 85%;
+  transform: translate(-85%, -50%);
+}
+
+.player-slot[data-position='bottom-left'] {
+  top: 90%;
+  left: 35%;
+  transform: translate(-35%, -90%);
+}
+
+.player-slot[data-position='bottom-center'] {
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+}
+
+.player-slot[data-position='bottom-right'] {
+  top: 90%;
+  left: 65%;
+  transform: translate(-65%, -90%);
+}
+
+@media (min-width: 768px) {
+  .card-placeholder,
+  .player-name,
+  .admin-avatar {
+    transform: rotate(0);
+  }
+  .card-placeholder {
+    width: 35px;
+    height: 60px;
+  }
+
+  .admin-avatar {
+    transform: rotate(0);
+    margin: 0;
+  }
+
+  .player-slot {
+    flex-direction: column;
+  }
+
+  .player-positions {
+    width: 100%;
+    height: 100vh;
+    transform: translate(-50%, -50%) rotate(0);
+  }
+
+  .new-admin {
+    top: 15%;
+  }
+
+  /* Posicionamiento específico de cada jugador */
+  .player-slot[data-position='top-left'] {
+    top: calc(50% - 220px);
+    left: calc(50% - 150px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='top-center'] {
+    top: calc(50% - 220px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='top-right'] {
+    top: calc(50% - 220px);
+    left: calc(50% + 150px);
+    transform: translate(-55%, -50%);
+  }
+
+  .player-slot[data-position='left'] {
+    top: 50%;
+    left: calc(50% - 320px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='right'] {
+    top: 50%;
+    left: calc(50% + 320px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-left'] {
+    top: calc(50% + 220px);
+    left: calc(50% - 150px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-center'] {
+    top: calc(50% + 220px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-right'] {
+    top: calc(50% + 220px);
+    left: calc(50% + 150px);
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Posicionamiento específico de cada jugador */
+  .player-slot[data-position='top-left'] {
+    top: calc(50% - 200px);
+    left: calc(50% - 170px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='top-center'] {
+    top: calc(50% - 200px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='top-right'] {
+    top: calc(50% - 200px);
+    left: calc(50% + 170px);
+    transform: translate(-55%, -50%);
+  }
+
+  .player-slot[data-position='left'] {
+    top: 50%;
+    left: calc(50% - 320px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='right'] {
+    top: 50%;
+    left: calc(50% + 320px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-left'] {
+    top: calc(50% + 200px);
+    left: calc(50% - 170px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-center'] {
+    top: calc(50% + 200px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-right'] {
+    top: calc(50% + 200px);
+    left: calc(50% + 170px);
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width: 1400px) {
+  /* Posicionamiento específico de cada jugador */
+  .player-slot[data-position='top-left'] {
+    top: calc(50% - 250px);
+    left: calc(50% - 170px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='top-center'] {
+    top: calc(50% - 250px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='top-right'] {
+    top: calc(50% - 250px);
+    left: calc(50% + 170px);
+    transform: translate(-55%, -50%);
+  }
+
+  .player-slot[data-position='left'] {
+    top: 50%;
+    left: calc(50% - 360px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='right'] {
+    top: 50%;
+    left: calc(50% + 360px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-left'] {
+    top: calc(50% + 250px);
+    left: calc(50% - 170px);
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-center'] {
+    top: calc(50% + 250px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .player-slot[data-position='bottom-right'] {
+    top: calc(50% + 250px);
+    left: calc(50% + 170px);
+    transform: translate(-50%, -50%);
+  }
+}

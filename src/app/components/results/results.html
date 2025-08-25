@@ -1,0 +1,16 @@
+@if( room.state === 'revealed'){
+<div class="results">
+  <div class="card-section">
+    @for(card of count; track $index ;let idx = $index){
+    <div class="votes-count">
+      <span class="votes-card">{{ count[idx] }}</span>
+      <p>{{ result.voteCount[card] }}{{ result.voteCount[card] > 1 ? ' votos' : ' voto' }}</p>
+    </div>
+    }
+  </div>
+  <div class="promedio">
+    <p>PROMEDIO:</p>
+    <h2>{{ result.average }}</h2>
+  </div>
+</div>
+}

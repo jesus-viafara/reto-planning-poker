@@ -1,0 +1,17 @@
+<div class="poker-table-outer">
+  <div class="poker-table-middle">
+    <div class="poker-table-inner">
+      @if(user.rol==='admin'){ @if(room.state==='revealing') {
+      <app-revealing-loadding id="reveal-loading" />
+      } @else if (room.state ==='revealed') {
+      <button id="reset-button" (click)="onReset()" class="poker-table-button">
+        Nueva Votacion
+      </button>
+      } @else if (room.state==='hidden') {
+      <button id="reveal-button" (click)="onReveal()" class="poker-table-button">
+        Revelar cartas
+      </button>
+      }}
+    </div>
+  </div>
+</div>

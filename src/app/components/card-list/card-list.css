@@ -1,0 +1,111 @@
+input {
+  display: none;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 5px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.card-selection {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translatex(-50%);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-selection h5 {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 100%;
+  margin: 0;
+  padding: 15px;
+}
+
+.cards {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  width: 90%;
+  overflow-x: auto; /* Enables horizontal scrolling when content overflows */
+  overflow-y: hidden; /* Hides any vertical scrollbars */
+  white-space: nowrap;
+  margin-bottom: -25px;
+}
+
+.vote-card {
+  display: inline-flex;
+  width: 29px;
+  height: 50px;
+  border: 1px solid #bb65ff;
+  border-radius: 7px;
+  box-shadow: 0px 5px 10px 0px rgba(100, 41, 205, 0.6);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.vote-card::after {
+  content: '';
+  position: absolute;
+  width: 29px;
+  height: 50px;
+  border-radius: 7px;
+  background: rgba(187, 101, 255, 1);
+  cursor: pointer;
+  opacity: 0;
+  z-index: -10;
+}
+
+.vote-card_button {
+  background: none;
+}
+
+.cards input:checked + label .vote-card::after {
+  opacity: 1;
+  padding: 2px;
+}
+.cards input:checked + label .vote-card {
+  transform: translatey(-10%);
+}
+
+@media (min-width: 480px) {
+  .new-vote-mode {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    width: 50vw;
+    height: 10vh;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    border: 1px solid rgba(187, 101, 255, 1);
+    border-radius: 25px;
+    box-shadow: 0px 0px 20px 0px rgba(189, 189, 255, 0.2) inset;
+    box-shadow: 0px 0px 15px 0px rgba(100, 41, 205, 1);
+    background: rgba(31, 13, 63, 1);
+  }
+  .cards {
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: -25px;
+    overflow: visible;
+  }
+}

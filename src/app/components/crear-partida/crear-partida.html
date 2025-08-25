@@ -1,8 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="createRoom()" class="crear-partida">
-  <section>
+  <section class="text-input-section">
     <label for="room-name">Nombra la partida</label>
     <input
-      class="name-input"
+      class="text-input"
       formControlName="roomName"
       type="text"
       name="room-name"
@@ -29,6 +29,7 @@
   <button
     type="submit"
     class="button"
+    [ngClass]="{ 'disabled-button': form.controls.roomName.errors }"
     [disabled]="form.controls.roomName.errors"
   >
     <p>Crear partida</p>

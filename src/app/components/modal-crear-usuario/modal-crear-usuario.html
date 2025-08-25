@@ -1,9 +1,9 @@
 <div class="modal-crear-usuario">
   <form [formGroup]="form" (ngSubmit)="createUser()" class="crear-usuario">
-    <section>
+    <section class="text-input-section">
       <label for="user-name">Tu nombre</label>
       <input
-        class="name-input"
+        class="text-input"
         formControlName="userName"
         type="text"
         name="user-name"
@@ -29,24 +29,10 @@
     </section>
     <div class="rol-group">
       <section class="rol-section">
-        <input
-          formControlName="modo"
-          type="radio"
-          id="jugador"
-          name="modo"
-          value="jugador"
-        />
+        <input formControlName="modo" type="radio" id="jugador" name="modo" value="jugador" />
         <label for="jugador">Jugador <span class="radio-button"></span></label>
-        <input
-          formControlName="modo"
-          type="radio"
-          id="espectador"
-          name="modo"
-          value="espectador"
-        />
-        <label for="espectador"
-          >Espectador <span class="radio-button"></span
-        ></label>
+        <input formControlName="modo" type="radio" id="espectador" name="modo" value="espectador" />
+        <label for="espectador">Espectador <span class="radio-button"></span></label>
       </section>
     </div>
     <button
@@ -55,7 +41,7 @@
         'disabled-button': form.controls.userName.errors || !form.getRawValue().modo,
         'button': form.getRawValue().modo,
       }"
-      [disabled]="form.controls.userName.errors && !user.modo"
+      [disabled]="!form.getRawValue().modo"
     >
       <p>Continuar</p>
     </button>

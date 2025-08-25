@@ -1,0 +1,14 @@
+@if(user.vote){
+<div
+  class="card"
+  [ngClass]="{
+    'no-background': user.vote === '?' || user.vote === 'coffe' || roomState === 'revealed',
+    'card-placeholder': user.vote,
+    espectador: user.modo === 'espectador'
+  }"
+>
+  @if(roomState === 'revealed' && user.modo ==='jugador' ){
+  <p id="vote-value">{{ user.vote }}</p>
+  }
+</div>
+}

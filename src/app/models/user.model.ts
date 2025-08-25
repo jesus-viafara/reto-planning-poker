@@ -3,4 +3,5 @@ export interface User {
   name: string;
   rol: string;
   modo: string;
+  vote: string;
 }

@@ -1,0 +1,43 @@
+@if(user.modo==='jugador' && room.state === 'hidden'){
+<div class="votes">
+  <form [formGroup]="form" class="card-selection">
+    <h5>Elige una carta 👇</h5>
+    <section class="cards">
+      @for(card of votes; track card){
+      <input
+        formControlName="vote"
+        type="radio"
+        [id]="card"
+        [value]="card"
+        name="vote"
+        (change)="onRadioChange($event)"
+      />
+      <label [for]="card"
+        ><span class="vote-card">{{ card }}</span></label
+      >
+      }
+      <input
+        formControlName="vote"
+        type="radio"
+        id="?"
+        value="?"
+        name="vote"
+        (change)="onRadioChange($event)"
+      />
+      <label id="card" for="?"><span class="vote-card">?</span></label>
+      @if(user.rol==='admin'){
+      <button
+        id="change-mode-button"
+        class="vote-card vote-card_button"
+        (click)="onChangeVoteMode()"
+      >
+        ☕️
+      </button>
+      }
+    </section>
+  </form>
+  @if(user.rol==="admin"){
+  <app-vote-mode-change [onChange]="changeVoteMode" />
+  }
+</div>
+}
