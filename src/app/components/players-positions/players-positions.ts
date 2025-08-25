@@ -24,7 +24,7 @@ export class PlayersPositions {
   menuPosition: string = '';
   userPicked: User = { id: '', name: '', rol: '', modo: '', vote: '?' };
   userLogged: User = { id: '', name: '', rol: '', modo: '', vote: '?' };
-  room: Room = { id: '', adminName: '', name: '', state: 'hidden', cardSet: [] };
+  room: Room = { id: '', adminName: '', name: '', state: 'hidden', cardSet: [], voteMode: '' };
   @Input() userList: User[] = [];
   playerPosition: string[] = [
     'bottom-center',
@@ -80,6 +80,6 @@ export class PlayersPositions {
     this.userPicked = { ...user };
     setTimeout(() => {
       this.newAdminMenu = false;
-    }, 3100);
+    }, 2900);
   }
 }

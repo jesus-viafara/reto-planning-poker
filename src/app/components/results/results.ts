@@ -15,13 +15,15 @@ import { Result } from '../../models/result.model';
 })
 export class Results {
   data$: Observable<DataState>;
+  readonly store: Store;
   user: User = { id: '', name: '', rol: '', modo: '', vote: '' };
   result: Result = { totalVotes: 0, average: 0, voteCount: {} };
-  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [] };
+  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [], voteMode: ' ' };
   count: string[] = [];
 
-  constructor(private store: Store<AppState>) {
-    this.data$ = this.store.select(getData);
+  constructor(store: Store<AppState>) {
+    this.store = store;
+    this.data$ = store.select(getData);
   }
 
   ngOnInit() {

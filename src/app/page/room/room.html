@@ -1,8 +1,9 @@
-@if( isChildOpen == true ) { <app-modal-crear-usuario (close)="isChildOpen = false" /> }
+@if( isChildOpen == true ) {
+<app-modal-crear-usuario id="crear-usuario" (close)="isChildOpen = false" /> }
 <app-header [adminName]="user.name"></app-header>
 <main class="main-room-content">
   <app-poker-table class="poker-table" />
   <app-players-positions class="player-positions" [userList]="participants" />
 </main>
-<app-card-list />
-<app-results />
+<app-card-list id="card-list" />
+<app-results id="results" />

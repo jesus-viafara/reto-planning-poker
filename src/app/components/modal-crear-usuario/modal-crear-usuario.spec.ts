@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { ModalCrearUsuarioComponent } from './modal-crear-usuario';
+import { initialState } from '../../state/reducers/data.reducer';
 
 describe('ModalCrearUsuarioComponent', () => {
   let component: ModalCrearUsuarioComponent;
@@ -9,6 +11,7 @@ describe('ModalCrearUsuarioComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ModalCrearUsuarioComponent],
+      providers: [provideMockStore({ initialState })],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ModalCrearUsuarioComponent);

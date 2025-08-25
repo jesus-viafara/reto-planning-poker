@@ -13,24 +13,23 @@ import { Store } from '@ngrx/store';
   styleUrl: './card.css',
 })
 export class Card {
-  data: any;
   data$: Observable<DataState>;
   user: User = { id: '', name: '', rol: '', modo: '', vote: '' };
+  readonly store: Store;
   @Input() userId: string = '';
   @Input() value: number = 0;
   @Input() selected: string = '';
-  votesRevealed: boolean = false;
+  roomState: string = 'hidden';
 
-  constructor(private store: Store<AppState>) {
-    this.data$ = this.store.select(getData);
+  constructor(store: Store<AppState>) {
+    this.store = store;
+    this.data$ = store.select(getData);
   }
 
   ngOnInit() {
     this.data$.subscribe((res: any) => {
       this.user = res.participants.find((user: User) => user.id === this.userId);
-      this.votesRevealed = res.room.revealed;
+      this.roomState = res.room.state;
     });
-
-    this.selected = this.user.vote;
   }
 }

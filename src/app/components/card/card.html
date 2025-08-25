@@ -2,21 +2,13 @@
 <div
   class="card"
   [ngClass]="{
-    'no-background': user.vote === '?' || user.vote === 'coffe',
+    'no-background': user.vote === '?' || user.vote === 'coffe' || roomState === 'revealed',
     'card-placeholder': user.vote,
     espectador: user.modo === 'espectador'
   }"
 >
-  @if(votesRevealed){
-  <p>{{ user.vote }}</p>
-
-  }
-</div>
-}@else{
-<div class="vote-card">
-  @if(votesRevealed){
-  <p>{{ value }}</p>
-
+  @if(roomState === 'revealed' && user.modo ==='jugador' ){
+  <p id="vote-value">{{ user.vote }}</p>
   }
 </div>
 }

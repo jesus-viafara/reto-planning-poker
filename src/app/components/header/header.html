@@ -7,7 +7,7 @@
     }
   </div>
   @if(room.id){ @if(room.name){
-  <h4>{{ room.name.toLocaleUpperCase() }}</h4>
+  <h4 id="room-name">{{ room.name.toLocaleUpperCase() }}</h4>
   }
   <div class="admin-info">
     <app-name-avatar
@@ -21,7 +21,7 @@
   </div>
   }
 </header>
-@if( isChangeModo == true ) {
+@if( isChangeModo === true ) {
 <div class="change-modo-menu">
   <div class="change-rol">
     <button (click)="onChangeModo()" class="close-button">X</button>

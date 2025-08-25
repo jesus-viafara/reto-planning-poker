@@ -19,12 +19,11 @@ import { setParticipants, setUser } from '../../state/actions/data.actions';
   styleUrl: './header.css',
 })
 export class HeaderComponent {
-  data: any;
   data$: Observable<DataState>;
   readonly store: Store<AppState>;
   @Input() adminName: string = '';
   @Output() adminname: string = '';
-  room: Room = { id: '', adminName: '', name: '', state: 'hidden', cardSet: [] };
+  room: Room = { id: '', adminName: '', name: '', state: 'hidden', cardSet: [], voteMode: '' };
   user: User = { id: '', name: '', rol: '', modo: '', vote: '?' };
   participants: User[] = [];
   avatarSize: string = 'small';
@@ -42,10 +41,8 @@ export class HeaderComponent {
 
   ngOnInit() {
     this.data$.subscribe((res: any) => {
-      this.data = res;
+      this.room = res.room;
     });
-
-    this.room = { ...this.data.room };
   }
 
   onChangeModo() {

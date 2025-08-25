@@ -18,9 +18,11 @@ export class NameAvatarComponent {
   @Input() type = '';
   data: any;
   data$: Observable<DataState>;
+  store: Store;
 
-  constructor(private store: Store<AppState>) {
-    this.data$ = this.store.select(getData);
+  constructor(store: Store<AppState>) {
+    this.store = store;
+    this.data$ = store.select(getData);
   }
 
   ngOnInit() {

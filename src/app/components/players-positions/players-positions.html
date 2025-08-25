@@ -1,7 +1,7 @@
 <div class="player-positions">
   @for(user of userList;track user.id ; let idx = $index){
   <div
-    [ngClass]="{ cursor: userLogged.rol === 'admin', 'no-cursor': user.rol === 'admin' }"
+    [ngClass]="{ cursor: userLogged.rol === 'admin', 'no-cursor': user.rol === 'player' }"
     class="player-slot"
     (click)="giveAdminMenu(user, playerPosition[$index])"
     onkeydown=""

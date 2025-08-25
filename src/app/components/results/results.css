@@ -57,8 +57,7 @@ h2 {
 @media (min-width: 480px) {
   .results {
     width: 70%;
-
-    margin-bottom: -15px;
+    margin-bottom: -40px;
   }
 
   .votes-card {
@@ -81,8 +80,8 @@ h2 {
     width: 40%;
   }
   .votes-card {
-    width: 50px;
-    height: 80px;
+    width: 40px;
+    height: 60px;
     font-weight: 700;
     font-size: 21px;
   }

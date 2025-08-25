@@ -3,7 +3,7 @@ import { DataState } from '../../models/dataState';
 import { setParticipants, setResult, setRoom, setUser } from '../actions/data.actions';
 
 export const initialState: Readonly<DataState> = {
-  room: { id: '', name: '', state: 'hidden', adminName: '', cardSet: [] },
+  room: { id: '', name: '', state: 'hidden', adminName: '', cardSet: [], voteMode: '' },
   user: { id: '', name: 'default', modo: 'espectador', rol: '', vote: '?' },
   result: { totalVotes: 0, average: 0, voteCount: { '0': 0 } },
   participants: [],

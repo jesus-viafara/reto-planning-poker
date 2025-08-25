@@ -17,14 +17,16 @@ import { RevealingLoadding } from '../revealing-loadding/revealing-loadding';
 })
 export class PokerTable {
   data$: Observable<DataState>;
-  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [] };
-  user?: User;
+  readonly store: Store;
+  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [], voteMode: ' ' };
+  user: User = { id: '', name: '', rol: '', modo: '', vote: '' };
   result: Result = { totalVotes: 0, average: 0, voteCount: {} };
   participants: User[] = [];
   votes: string[] = [];
 
-  constructor(private store: Store<AppState>) {
-    this.data$ = this.store.select(getData);
+  constructor(store: Store<AppState>) {
+    this.store = store;
+    this.data$ = store.select(getData);
   }
 
   ngOnInit() {

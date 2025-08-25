@@ -4,4 +4,5 @@ export interface Room {
   state: string;
   adminName: string;
   cardSet: string[];
+  voteMode: string;
 }

@@ -9,44 +9,35 @@ import { setUser, setParticipants, setRoom } from '../../state/actions/data.acti
 import { User } from '../../models/user.model';
 import { Result } from '../../models/result.model';
 import { Room } from '../../models/room.model';
+import { escalaDuplicacion, serieFibonacci, seriePersonalizada } from '../../data';
+import { VoteModeChange } from '../vote-mode-change/vote-mode-change';
 
 @Component({
   selector: 'app-card-list',
-  imports: [FormsModule, CommonModule, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, VoteModeChange],
   templateUrl: './card-list.html',
   styleUrl: './card-list.css',
 })
 export class CardList {
   data: any;
   data$: Observable<DataState>;
+  readonly store: Store;
   user: User = { id: '', name: '', rol: '', modo: '', vote: '' };
-  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [] };
+  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [], voteMode: ' ' };
   userList: User[] = [];
   result: Result = { totalVotes: 0, average: 0, voteCount: { '0': 0 } };
   selectedOption: string = '?';
-  ramdomSerie: string[] = this.seriePersonalizada(10);
+  votes: string[] = [];
   isSelected: boolean = false;
+  changeVoteMode: boolean = false;
   fb = inject(NonNullableFormBuilder);
   form = this.fb.group({
-    vote: this.fb.control(''),
+    vote: this.fb.control('?'),
   });
 
-  constructor(private store: Store<AppState>) {
-    this.data$ = this.store.select(getData);
-  }
-
-  seriePersonalizada(n: number) {
-    const secuencia = [];
-    let valor = 1;
-    for (let i = 0; i < n; i++) {
-      secuencia.push(valor + '');
-      if (i % 2 === 0) {
-        valor += 3;
-      } else {
-        valor *= 2;
-      }
-    }
-    return secuencia;
+  constructor(store: Store<AppState>) {
+    this.store = store;
+    this.data$ = store.select(getData);
   }
 
   ngOnInit() {
@@ -54,9 +45,29 @@ export class CardList {
       this.user = res.user;
       this.room = { ...res.room };
       this.result = { ...res.result };
+      if (res.room.voteMode === 'fibonacci') {
+        this.votes = serieFibonacci(10);
+      } else if (res.room.voteMode === 'escala-cuadratica') {
+        this.votes = escalaDuplicacion(10);
+      } else {
+        this.votes = seriePersonalizada(10);
+      }
     });
-    this.room.cardSet = [...this.ramdomSerie];
+
+    this.room.cardSet = [...this.votes];
     this.store.dispatch(setRoom({ payload: { ...this.room } }));
+    if (this.user.vote) {
+      this.form.setValue({ vote: this.user.vote || '' });
+    } else {
+      this.form.setValue({ vote: this.votes[0] || '' });
+    }
+  }
+
+  onChangeVoteMode() {
+    this.changeVoteMode = true;
+    setTimeout(() => {
+      this.changeVoteMode = false;
+    }, 2900);
   }
 
   onRadioChange(event: any) {

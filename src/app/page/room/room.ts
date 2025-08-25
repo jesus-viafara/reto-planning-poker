@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Room } from '../../models/room.model';
 import { ModalCrearUsuarioComponent } from '../../components/modal-crear-usuario/modal-crear-usuario';
-import { User, userList1, userList2, userList3 } from '../../models/user.model';
+import { userList1, userList2, userList3 } from '../../data';
 import { PokerTable } from '../../components/poker-table/poker-table';
 import { PlayersPositions } from '../../components/players-positions/players-positions';
 import { CardList } from '../../components/card-list/card-list';
@@ -13,6 +13,7 @@ import { Store } from '@ngrx/store';
 import { setParticipants, setResult, setRoom, setUser } from '../../state/actions/data.actions';
 import { Results } from '../../components/results/results';
 import { Result } from '../../models/result.model';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-room',
@@ -32,7 +33,7 @@ export class RoomComponent {
   readonly store: Store;
   data: any;
   data$: Observable<DataState>;
-  room?: Room;
+  room: Room = { id: '', name: '', state: '', adminName: '', cardSet: [], voteMode: '' };
   adminName: string = 'default';
   user: User = { id: '', name: '', rol: '', modo: '', vote: '' };
   result: Result = { totalVotes: 0, average: 0, voteCount: {} };
@@ -52,11 +53,11 @@ export class RoomComponent {
       this.data = res;
     });
 
-    if (!this.data.room.id) {
+    if (!this.data?.room.id) {
       this.data = JSON.parse(localStorage.getItem('data') || '{}');
       this.room = { ...this.data.room };
       this.user = { ...this.data.user };
-      this.participants = [...this.data.participants];
+      this.participants = this.data.participants;
       this.result = { ...this.data.result };
       this.store.dispatch(
         setRoom({

@@ -10,7 +10,7 @@ import {
   maxNumbersValidator,
   soloNumerosValidator,
 } from '../../validations/name.validations';
-import { User, userList2 } from '../../models/user.model';
+import { User } from '../../models/user.model';
 import { CommonModule } from '@angular/common';
 import * as uuid from 'uuid';
 import { Room } from '../../models/room.model';
@@ -19,6 +19,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState, getData } from '../../state/selectors/data.selectors';
 import { setParticipants, setRoom, setUser } from '../../state/actions/data.actions';
+import { userList2 } from '../../data';
 
 @Component({
   selector: 'app-modal-crear-usuario',
@@ -30,9 +31,10 @@ import { setParticipants, setRoom, setUser } from '../../state/actions/data.acti
 export class ModalCrearUsuarioComponent {
   data: any;
   data$: Observable<DataState>;
+  readonly store: Store;
   @Output() close = new EventEmitter(); // or // close = output();
   user: User = { id: '', name: '', rol: '', modo: '', vote: '?' };
-  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [] };
+  room: Room = { id: '', name: '', state: 'hidden', adminName: '', cardSet: [], voteMode: ' ' };
   userList: User[] = [...userList2];
   fb = inject(NonNullableFormBuilder);
   form = this.fb.group({
@@ -49,8 +51,9 @@ export class ModalCrearUsuarioComponent {
     modo: this.fb.control(''),
   });
 
-  constructor(private store: Store<AppState>) {
-    this.data$ = this.store.select(getData);
+  constructor(store: Store<AppState>) {
+    this.store = store;
+    this.data$ = store.select(getData);
   }
 
   ngOnInit(): void {
@@ -58,7 +61,7 @@ export class ModalCrearUsuarioComponent {
       this.data = res;
     });
 
-    if (!this.data.room.id) {
+    if (!this.data?.room.id) {
       this.data = JSON.parse(localStorage.getItem('data') || '{}');
       this.room = { ...this.data.room };
       this.store.dispatch(
@@ -74,7 +77,7 @@ export class ModalCrearUsuarioComponent {
       );
     }
 
-    if (this.data.user.id) {
+    if (this.data.user?.id) {
       this.store.dispatch(
         setUser({
           payload: { ...this.data.user },
@@ -86,7 +89,7 @@ export class ModalCrearUsuarioComponent {
     this.user = { ...this.data.user };
     this.userList = [...this.userList, this.user];
 
-    if (this.data.user.id) {
+    if (this.data.user?.id) {
       this.close.emit(true);
     }
   }
